@@ -12,4 +12,4 @@ Direct link to category:  https://gra-afch.com/product-category/rf-units/
 
 "Libraries" - contains libraries that are only needed for compilation: place them to "C:\Users\[USER]\Documents\Arduino\libraries", where [USER] - your windows username.
 
-This AD9910 Shield can be easily connected to Arduino Mega without additional wires and converters. 
+This AD9912 Shield can be easily connected to Arduino Mega without additional wires and converters. 
