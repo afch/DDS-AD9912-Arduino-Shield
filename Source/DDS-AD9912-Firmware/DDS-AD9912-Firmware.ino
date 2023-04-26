@@ -17,7 +17,10 @@ Max Core freq: 1360MHz
 
 #define DBG 0
 
-#define FIRMWAREVERSION 1.0 //06.07.2022 //Версия 1.0
+#define FIRMWAREVERSION 1.01
+//v1.01 26.04.2023
+//EXT OSC renamed to REF CLK IN
+//RFsin renamed to RFout
 
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
@@ -515,7 +518,7 @@ void DrawMainMenu()
 
   display.setFont(NULL);
   display.setCursor(18, 20);
-  display.print(F("Sin"));
+  display.print(F("Out"));
   display.setFont(&font);
   
   display.setCursor(33, 30);
@@ -599,4 +602,3 @@ void DrawMainMenu()
   
   display.display();
 }
-

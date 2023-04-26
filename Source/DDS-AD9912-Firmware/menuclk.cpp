@@ -11,7 +11,7 @@
   int SetupMenuPos=0;
   
   int ClockSourceIndex=INIT_CLOCK_SOURCE_INDEX;
-  String ClockSourceName[3]={"XO AT-cut", "TCXO/OCXO", "EXT OSC"};
+  String ClockSourceName[3]={"XO AT-cut", "TCXO/OCXO", "REF CLK IN"};
   #define CLOCK_SOURCE_XO_INDEX         0
   #define CLOCK_SOURCE_TCXO_INDEX       1
   #define CLOCK_SOURCE_EXT_OSC_INDEX    2

@@ -9,7 +9,7 @@
 #include "menuclk.h"
 
 #include <Encoder.h>
-#ifndef GRA_AND_AFCH_ENCODER_MOD
+#ifndef GRA_AND_AFCH_ENCODER_MOD2
   #error The "Encoder" library modified by GRA and AFCH must be used!
 #endif
 
