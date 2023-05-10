@@ -1,7 +1,7 @@
 #ifndef __CUSTOM_SSD1306
 #define __CUSTOM_SSD1306
 
-#include <Adafruit_SSD1306.h>
+//#include <Adafruit_SSD1306.h>
 #include "Custom_Adafruit_SSD1306.h"
 #include <Wire.h>
 
