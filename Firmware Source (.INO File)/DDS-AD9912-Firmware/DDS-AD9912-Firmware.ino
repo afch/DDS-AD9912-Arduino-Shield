@@ -15,9 +15,15 @@ Max Core freq: 1360MHz
 #include "font.h"
 #include "menusweep.h"
 
+#include <AsyncStream.h>
+AsyncStream<33> serialbuffer(&Serial, '\n');
+#include <GParser.h>
+
 #define DBG 0
 
-#define FIRMWAREVERSION 1.01
+#define FIRMWAREVERSION 1.02
+//v1.02 01.06.2023
+//Serial port remote control
 //v1.01 26.04.2023
 //EXT OSC renamed to REF CLK IN
 //RFsin renamed to RFout
@@ -26,6 +32,7 @@ Max Core freq: 1360MHz
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
 
 Custom_Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire);
+
 
 #include "main.h"
 
@@ -97,6 +104,7 @@ void setup()
 {
   CMOS_Divider_Hz=2;
   Serial.begin(115200);
+  serialbuffer.setTimeout(100);
 
   Serial.println(F("DDS AD9912 Arduino Shield by GRA & AFCH. (gra-afch.com)"));
   Serial.print(F("Firmware v.:"));
@@ -144,6 +152,7 @@ void loop()
   //DDS_SPKILL_CH1();
  while (1)
   {
+    ReadSerialCommands();
     curPos=0;
     curPos=myEnc.read();
     modeButton.Update();
