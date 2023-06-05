@@ -65,8 +65,9 @@ Usage example:
   <pre>
   echo F100000000 > COM3
   </pre>
-  
-An example of setting up a serial port in the Ubuntu 22.04:
+# Ubuntu 22.04:
+
+An example of setting up a serial port in the Ubuntu:
   <pre>
   mode COM3 baud=115200 DTR=OFF Data=8
   </pre>
