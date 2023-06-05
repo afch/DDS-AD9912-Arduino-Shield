@@ -69,11 +69,13 @@ Usage example:
 
 An example of setting up a serial port in the Ubuntu:
   <pre>
-  mode COM3 baud=115200 DTR=OFF Data=8
+  sudo usermod -aG dialout $USER_NAME$
+  sudo chmod a+rw /dev/ttyUSB0
+  sudo stty -F /dev/ttyUSB0 115200 cs8 ixoff -hupcl -echo
   </pre>
   
 Usage example:
   <pre>
-  echo F100000000 > COM3
+  echo "F100000000" > /dev/ttyUSB0
   </pre>
 
