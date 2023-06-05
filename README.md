@@ -32,28 +32,28 @@ Where V means that the component must be installed (soldered), and X - means tha
 # List of Serial Port Commands:
 Starting with version 1.02, the ability to control via the serial port has been added.
 
-  F - Set Frequency in Hz (100000 - 500000000)
-  H - Set HSTL Output: 0 - OFF, 1 - ON, 2 - Doubler ON
-  C - Set CMOS Output: 0 - OFF, 1 - ON
-  D - Set CMOS Divider (1 - 65353)
-  P - Set Output Power in dBm (-7 - +4)
-  M - Get Model
-  V - Get Firmware Version
-  h - Help
-  ; - Commands Separator
+  F - Set Frequency in Hz (100000 - 500000000)  
+  H - Set HSTL Output: 0 - OFF, 1 - ON, 2 - Doubler ON  
+  C - Set CMOS Output: 0 - OFF, 1 - ON  
+  D - Set CMOS Divider (1 - 65353)  
+  P - Set Output Power in dBm (-7 - +4)  
+  M - Get Model  
+  V - Get Firmware Version  
+  h - Help  
+  ; - Commands Separator  
           
-Example:
-  F100000;P-2
-Set Frequency to 100 kHz, and Output Power to -2 dBm.
-Any number of commands in any order is allowed.
+Example:  
+  F100000;P-2  
+Set Frequency to 100 kHz, and Output Power to -2 dBm.  
+Any number of commands in any order is allowed.  
 
 # Serial Port Settings:
 
-  Speed - 115200 Bouds
-  Data Bits - 8
-  Stop Bits - 1
-  Parity - No
-  DTR - OFF
+  Speed - 115200 Bouds  
+  Data Bits - 8  
+  Stop Bits - 1  
+  Parity - No  
+  DTR - OFF  
 # Windows:
 
 An example of setting up a serial port in the Windows console:
