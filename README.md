@@ -38,6 +38,8 @@ Starting with version 1.02, the ability to control via the serial port has been 
   D - Set CMOS Divider (1 - 65353)  
   P - Set Output Power in dBm (-7 - +4)  
   M - Get Model  
+  E - Enable Outputs (ALL)  
+  S - Shut down Outputs (ALL)  
   V - Get Firmware Version  
   h - Help  
   ; - Commands Separator  
