@@ -9,6 +9,8 @@ const char HELP_STRING [] PROGMEM = "F - set Frequency in Hz (100000 - 500000000
           "P - Set Output Power in dBm (-7 - +4)\n"
           "M - Get Model\n"
           "V - Get Firmware Version\n"
+          "E - Enable Outputs (ALL)\n"
+          "S - Shut down Outputs (ALL)\n"
           "h - This Help\n"
           "; - Commands Separator"
           "\n"
@@ -85,6 +87,18 @@ void ReadSerialCommands()
           Serial.println(value);
           A = value + 7; //index shift in array
         } else Serial.println("Power is OUT OF RANGE (-7 - +4)");
+      break;
+
+      case 'S': //Shutdown
+        Serial.println(F("Outputs was Shut down"));
+        digitalWrite(PWRDOWN_PIN, HIGH);
+        isPWR_DWN = true;
+      break;
+
+      case 'E':
+        Serial.println(F("Outputs Enabled"));
+        digitalWrite(PWRDOWN_PIN, LOW);
+        isPWR_DWN = false;
       break;
 
       case 'V': //Firmware Version request

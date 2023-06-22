@@ -10,6 +10,8 @@
 #include <inttypes.h>
 #include <SPI.h>
 
+#define PWRDOWN_PIN 8 
+
 #define ad9912_PartID 0x1902
 #define ad9912_read 0x1
 #define ad9912_write 0x0

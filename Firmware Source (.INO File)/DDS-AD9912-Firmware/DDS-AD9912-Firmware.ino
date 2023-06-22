@@ -19,7 +19,9 @@ Max Core freq: 1360MHz
 
 #define DBG 0
 
-#define FIRMWAREVERSION 1.03
+#define FIRMWAREVERSION 1.04
+//v1.04 22.06.2023
+//Turn-on(E) and turn-off(S) commands have been added.
 //v1.03 20.06.2023
 //Accelerated processing of commands transmitted via a serial port.
 //Encoder performance has been improved.
@@ -34,13 +36,13 @@ Max Core freq: 1360MHz
 
 Custom_Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire);
 
-
 #include "main.h"
 
 Encoder myEnc(B_PIN, A_PIN);
 
 ClickButton modeButton(MODE_PIN, LOW, CLICKBTN_PULLUP);
-//ClickButton backButton(BACK_PIN, LOW, CLICKBTN_PULLUP);
+
+bool isPWR_DWN = false;
 
 #define I2C2SLA 20
 #define I2C2SCL 21
@@ -527,7 +529,8 @@ void DrawMainMenu()
 
   display.setFont(NULL);
   display.setCursor(18, 20);
-  display.print(F("Out"));
+  if (!isPWR_DWN) display.print(F("Out"));
+    else display.print(F("OFF"));
   display.setFont(&font);
   
   display.setCursor(33, 30);

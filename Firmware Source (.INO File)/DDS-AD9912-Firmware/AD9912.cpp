@@ -17,7 +17,7 @@
 #define SPI_CS 5
 #define IO_update 6
 #define RESET_PIN 7
-#define PWRDOWN_PIN 8 
+
 
 #define S1_PIN 4
 #define S4_PIN 9 
