@@ -21,7 +21,9 @@ Max Core freq: 1360MHz
 
 #define DBG 0
 
-#define FIRMWAREVERSION 2.07
+#define FIRMWAREVERSION 2.08
+//v2.08 06.10.2025 
+//Fixed: Improved FTW calculation accuracy
 //v2.07 12.02.2025
 //Отключены выходы S1 и S4, которые конфликторвали с RF Switch, что в свою очередь приводило к неккоректной инициализации пути для источника тактирования
 //v2.06 11.02.2025

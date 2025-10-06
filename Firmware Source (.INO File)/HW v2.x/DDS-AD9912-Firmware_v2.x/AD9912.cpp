@@ -255,7 +255,10 @@ void DDS_FTW_Send (uint64_t *BUFF_DDS)
 uint64_t DDS_Freq_To_FTW(uint64_t Freq, uint64_t Fs)
   {
     uint64_t FTW;
-    FTW = (uint64_t) (281474976710656 * (Freq / (float) Fs)); //DDS_FTW_Send(&DDS_Freq_To_FTW());
+    //FTW = (uint64_t) (281474976710656 * (Freq / (float) Fs)); //DDS_FTW_Send(&DDS_Freq_To_FTW());
+    uint128_t prod = mul64x64(281474976710656ULL, Freq);
+    FTW = div128by32(prod, Fs);
+    
     return FTW;
   }
 
@@ -292,6 +295,49 @@ void DDS_SPKILL_CH1()
  SPI.transfer(0x0); //bit#7 disabled*/
  digitalWrite(SPI_CS, HIGH); // CS = 1
  DDS_UPDATE();
+}
+
+// struct uint128_t {
+//   uint64_t hi;
+//   uint64_t lo;
+// };
+
+uint128_t mul64x64(uint64_t a, uint64_t b) {
+  uint64_t a_lo = (uint32_t)a;
+  uint64_t a_hi = a >> 32;
+  uint64_t b_lo = (uint32_t)b;
+  uint64_t b_hi = b >> 32;
+
+  uint64_t lo_lo = a_lo * b_lo;
+  uint64_t hi_lo = a_hi * b_lo;
+  uint64_t lo_hi = a_lo * b_hi;
+  uint64_t hi_hi = a_hi * b_hi;
+
+  uint64_t carry = ((lo_lo >> 32) + (hi_lo & 0xFFFFFFFF) + (lo_hi & 0xFFFFFFFF)) >> 32;
+
+  uint128_t result;
+  result.lo = lo_lo + ((hi_lo & 0xFFFFFFFF) << 32) + ((lo_hi & 0xFFFFFFFF) << 32);
+  result.hi = hi_hi + (hi_lo >> 32) + (lo_hi >> 32) + carry;
+  return result;
+}
+
+uint64_t div128by32(uint128_t x, uint32_t d) {
+  uint64_t remainder = 0;
+  uint64_t result_hi = 0, result_lo = 0;
+
+  remainder = x.hi % d;
+  result_hi = x.hi / d;
+
+  uint64_t combined = (remainder << 32) | (x.lo >> 32);
+  uint64_t part1 = combined / d;
+  remainder = combined % d;
+
+  uint64_t combined2 = (remainder << 32) | (uint32_t)x.lo;
+  uint64_t part2 = combined2 / d;
+
+  result_lo = (part1 << 32) | (part2 & 0xFFFFFFFF);
+
+  return result_lo;
 }
 
 /*

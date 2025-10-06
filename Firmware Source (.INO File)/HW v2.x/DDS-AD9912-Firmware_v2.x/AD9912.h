@@ -157,6 +157,14 @@ extern uint8_t PLL_Parameters_Register_Value;
 extern uint8_t HSTL_Driver_Register_Value;
 extern uint8_t CMOS_Driver_Register_Value;
 
+struct uint128_t {
+  uint64_t hi;
+  uint64_t lo;
+};
+
+uint128_t mul64x64(uint64_t a, uint64_t b);
+uint64_t div128by32(uint128_t x, uint32_t d);
+
 
 /*
 class AD9912 {
